@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Portfolio</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #0a192f;
+      color: #ccd6f6;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #64ffda;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #8892b0;
+    }
+
+    span {
+      color: #64ffda;
+    }
+
+    /* Header & Navigation */
+    header {
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(10, 25, 47, 0.95);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo h1 {
+      font-size: 2rem;
+      color: #64ffda;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 30px;
+    }
+
+    nav ul li a {
+      color: #ccd6f6;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover, 
+    nav ul li a.active {
+      color: #64ffda;
+    }
+
+    /* Hero Section - Home Page */
+    .hero {
+      padding: 5rem 0;
+      min-height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero-text {
+      flex: 1;
+      padding-right: 2rem;
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-image img {
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #64ffda;
+      box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+    }
+
+    .intro {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-text h2 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #e6f1ff;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      color: #8892b0;
+      margin-bottom: 30px;
+      max-width: 90%;
+    }
+
+    .social-icons {
+      display: flex;
+      margin-bottom: 30px;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(100, 255, 218, 0.1);
+      border-radius: 50%;
+      margin-right: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background-color: rgba(100, 255, 218, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .social-icons i {
+      color: #64ffda;
+      font-size: 1.2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background-color: transparent;
+      border: 2px solid #64ffda;
+      color: #64ffda;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: rgba(100, 255, 218, 0.1);
+      transform: translateY(-3px);
+    }
+
+    /* About Section - About Page */
+    .about {
+      padding: 5rem 0;
+      min-height: calc(100vh - 80px);
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .about-image {
+      flex: 1;
+    }
+
+    .hero-image img,
+.about-image img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgb(239, 185, 7);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #e6f1ff;
+    }
+
+    .about-text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #8892b0;
+    }
+
+    .about-text p {
+      color: #8892b0;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+
+    /* Services Section - Services Page */
+    .services {
+      padding: 5rem 0;
+      min-height: calc(100vh - 80px);
+    }
+
+    .services h2 {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      text-align: center;
+      color: #e6f1ff;
+    }
+
+    .services-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background-color: #112240;
+      padding: 2rem;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #1e3a8a;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      border-color: #64ffda;
+    }
+
+    .service-icon {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #64ffda;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #e6f1ff;
+    }
+
+    .service-card p {
+      color: #8892b0;
+      margin-bottom: 20px;
+    }
+
+    .service-card .btn {
+      padding: 0.5rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    /* Portfolio Section - Portfolio Page */
+    .portfolio {
+      padding: 5rem 0;
+      min-height: calc(100vh - 80px);
+    }
+
+    .portfolio h2 {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      text-align: center;
+      color: #e6f1ff;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 250px;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(17, 34, 64, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .project-info {
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .project-info h3 {
+      color: #e6f1ff;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .project-info p {
+      color: #8892b0;
+      margin-bottom: 15px;
+    }
+
+    .project-link {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: #64ffda;
+      border-radius: 50%;
+      color: #112240;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      transition: background-color 0.3s;
+    }
+
+    .project-link:hover {
+      background-color: #1e3a8a;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 5rem 0;
+      background-color: #112240;
+      color: #ccd6f6;
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .contact-form {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .contact-form textarea {
+      height: 200px;
+      resize: none;
+    }
+
+    .contact-form button {
+      padding: 1rem 2rem;
+      background-color: #64ffda;
+      border: none;
+      color: #0a192f;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: #2f9f8e;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>Ritesh Rodge</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h2>Hello, I'm <span>Ritesh Rodge</span></h2>
+        <p class="intro">A passionate developer and learner</p>
+        <p class="description">
+          I am a 3rd-year student in computer science and technology, with a deep interest in AI, deep learning, and data science. I'm always working on innovative solutions and projects to grow my skill set.
+        </p>
+        <div class="social-icons">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <a href="#portfolio" class="btn">View My Work</a>
+      </div>
+      <div class="hero-image">
+        <img src="profile.jpg" alt="Ritesh Rodge">
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container about-content">
+      <div class="about-image">
+        <img src="about.jpg" alt="About Ritesh">
+      </div>
+      <div class="about-text">
+        <h2>About Me</h2>
+        <h3>Developer | Learner | Innovator</h3>
+        <p>
+          I am a third-year student passionate about developing software solutions. My focus lies in AI and software engineering, and I constantly look for challenges that help me grow and expand my expertise.
+        </p>
+        <a href="#portfolio" class="btn">Explore My Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>My Services</h2>
+      <div class="services-container">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3>Web Development</h3>
+          <p>I build responsive and visually appealing websites tailored to your needs.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-database"></i></div>
+          <h3>Data Science</h3>
+          <p>Data analysis, visualization, and predictive modeling using cutting-edge algorithms.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-brain"></i></div>
+          <h3>AI & ML Solutions</h3>
+          <p>AI-based solutions for real-world problems, including image recognition and automation.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <h2>My Portfolio</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="C:\website\project1.webp" alt="Project 1">
+          <div class="project-overlay">
+            <div class="project-info">
+              <h3>Project 1</h3>
+              <p>Web development project showcasing a real-time application.</p>
+              <a href="https://github.com/Ritesh972004" target="_blank" rel="noopener noreferrer" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="C:\website\project2.jpeg" alt="Project 2">
+          <div class="project-overlay">
+            <div class="project-info">
+              <h3>Project 2</h3>
+              <p>Machine learning project for image classification.</p>
+              <a href="https://github.com/Ritesh972004" target="_blank" rel="noopener noreferrer" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="C:\website\image3.png" alt="Project 3">
+          <div class="project-overlay">
+            <div class="project-info">
+              <h3>Project 3</h3>
+              <p>Data science project focused on time series forecasting.</p>
+              <a href="https://github.com/Ritesh972004" target="_blank" rel="noopener noreferrer" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <form class="contact-form" action="#" method="post">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+</body>
+</html>
